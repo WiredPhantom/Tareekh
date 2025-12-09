@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکزِ صحت - طبِ نبوی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter landscape;
+            margin: 0.5in;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            background: linear-gradient(135deg, #0f4c3a 0%, #1a6b4f 50%, #2d8659 100%);
+            color: #2c3e50;
+            line-height: 2;
+            font-size: 14pt;
+            direction: rtl;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0a3d2e 0%, #1a6b4f 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '☪';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.05;
+            top: -50px;
+            left: -50px;
+            transform: rotate(-15deg);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .header .tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+            font-weight: 400;
+        }
+
+        .main-quote {
+            background: white;
+            margin: 2rem auto;
+            max-width: 900px;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            border: 3px solid #d4af37;
+        }
+
+        .main-quote .arabic {
+            font-size: 2.5rem;
+            color: #0a3d2e;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .main-quote .urdu-text {
+            font-size: 1.5rem;
+            color: #555;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .model-layout {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .model-layout h2 {
+            text-align: center;
+            color: #0a3d2e;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .layout-diagram {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 2px solid #0a3d2e;
+            margin: 2rem 0;
+            direction: ltr;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #2d8659;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .section-card h3 {
+            color: #0a3d2e;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-card .icon {
+            font-size: 2.5rem;
+        }
+
+        .subsection {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 4px solid #2d8659;
+        }
+
+        .subsection h4 {
+            color: #1a6b4f;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .medicine-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .medicine-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .medicine-item:hover {
+            transform: scale(1.05);
+        }
+
+        .medicine-item .label {
+            font-weight: bold;
+            color: #0a3d2e;
+            font-size: 1.3rem;
+        }
+
+        .info-board {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef0 100%);
+            border: 3px solid #d4af37;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-board h4 {
+            color: #0a3d2e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .info-board ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-board li {
+            padding: 0.8rem 0;
+            padding-right: 2rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .info-board li::before {
+            content: '✔';
+            position: absolute;
+            right: 0;
+            color: #2d8659;
+            font-weight: bold;
+        }
+
+        .hadith-card {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-right: 5px solid #2d8659;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .hadith-card .arabic {
+            font-size: 1.8rem;
+            color: #0a3d2e;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hadith-card .translation {
+            color: #555;
+            font-size: 1.3rem;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .color-box {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+        }
+
+        .garden-section {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .plants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .plant-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .plant-card .plant-name {
+            font-weight: bold;
+            color: #2d8659;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .plant-card .benefit {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: #0a3d2e;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .medicine-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        ol, ul {
+            padding-right: 2rem;
+        }
+
+        li {
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🕌 مرکزِ صحت - طبِ نبوی</h1>
+        <div class="tagline">نبوی طب - جسم، دماغ اور روح کا مکمل نظام</div>
+        <div class="scroll-indicator">↓ مکمل ماڈل دیکھیں ↓</div>
+    </div>
+
+    <div class="container">
+        <div class="main-quote">
+            <div class="arabic">النظافة من الإيمان</div>
+            <div class="urdu-text">صفائی نصف ایمان ہے</div>
+        </div>
+
+        <div class="main-quote">
+            <div class="arabic">اللہ نے ہر مرض کے ساتھ اس کی شفا بھی نازل کی</div>
+            <div class="urdu-text">اللہ تعالیٰ نے ہر بیماری کے ساتھ اس کا علاج بھی اتارا ہے</div>
+        </div>
+
+        <div class="model-layout">
+            <h2> tibbe nabwi</h2>
+            <div class="layout-diagram">┌─────────────────────────────────────────────┐
+│         مرکزِ صحت - طبِ نبوی                │
+│                                             │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐    │
+│  │  صفائی   │  │  جڑی    │  │  مشورہ  │    │
+│  │  سٹیشن  │  │  بوٹی   │  │  خانہ   │    │
+│  └─────────┘  └─────────┘  └─────────┘    │
+│                                             │
+│  ┌─────────────────────────────────────┐   │
+│  │    قرنطینہ اور عوامی صحت            │   │
+│  └─────────────────────────────────────┘   │
+│                                             │
+│         [طبی جڑی بوٹیوں کا باغ]            │
+└─────────────────────────────────────────────┘</div>
+        </div>
+
+        <div class="sections-grid">
+            <!-- حصہ 1: صفائی سٹیشن -->
+            <div class="section-card">
+                <h3><span class="icon">🚿</span> حصہ 1: صفائی سٹیشن</h3>
+                
+                <div class="subsection">
+                    <h4>جسمانی ڈھانچہ:</h4>
+                    <ul>
+                        <li>چھوٹی گنبد والی عمارت (اسلامی طرزِ تعمیر)</li>
+                        <li>فیروزی اور سفید ٹائلیں</li>
+                        <li>درمیان میں چھوٹا پانی کا فوارہ</li>
+                        <li>نماز کی چٹائی کی جگہ</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>الف) وضو سٹیشن:</h4>
+                    <ul>
+                        <li>چھوٹا تانبے/پیتل کا لوٹا</li>
+                        <li>پانی کا برتن</li>
+                        <li>مسواک کی چھڑیاں ہولڈر میں</li>
+                        <li>صاف تولیے</li>
+                    </ul>
+                </div>
+
+                <div class="info-board">
+                    <h4>دس فطری صفائی کے کام</h4>
+                    <ul>
+                        <li>مسواک (دانتوں کی صفائی)</li>
+                        <li>ناخن کاٹنا</li>
+                        <li>ختنہ</li>
+                        <li>استنجا (بیت الخلا کے بعد صفائی)</li>
+                        <li>داڑھی کی دیکھ بھال</li>
+                        <li>بغل کے بال صاف کرنا</li>
+                        <li>زیرِ ناف بال صاف کرنا</li>
+                        <li>مونچھیں کترنا</li>
+                        <li>کلی کرنا</li>
+                        <li>ناک میں پانی ڈالنا</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ج) سنگھار کے اوزار:</h4>
+                    <ul>
+                        <li>چھوٹی قینچی (ناخنوں کے لیے)</li>
+                        <li>چھوٹی کنگھی</li>
+                        <li>قدرتی مسواک کی چھڑیاں</li>
+                        <li>سرمہ کا ڈبہ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- حصہ 2: جڑی بوٹیوں کی دکان -->
+            <div class="section-card">
+                <h3><span class="icon">🏺</span> حصہ 2: جڑی بوٹیوں کی دکان</h3>
+                
+                <div class="subsection">
+                    <h4>جسمانی ڈھانچہ:</h4>
+                    <ul>
+                        <li>لکڑی کی الماریاں</li>
+                        <li>محراب دار دروازہ</li>
+                        <li>گرم امبر LED روشنی</li>
+                        <li>لٹکتی تسبیح</li>
+                    </ul>
+                </div>
+
+                <div class="medicine-grid">
+                    <div class="medicine-item">
+                        <div class="label">شہد</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">کلونجی</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">کھجور</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">سرکہ</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">زیتون</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">جو</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">قسط</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">مہندی</div>
+                    </div>
+                    <div class="medicine-item">
+                        <div class="label">انجیر</div>
+                    </div>
+                </div>
+
+                <div class="hadith-card">
+                    <div class="arabic">الشفاء في ثلاث</div>
+                    <div class="translation">
+                        <strong>شفا تین چیزوں میں ہے:</strong><br>
+                        • شہد<br>
+                        • حجامہ (پچھنے لگوانا)<br>
+                        • داغ لگانا
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h4>اصلی/خشک جڑی بوٹیوں کی نمائش:</h4>
+                    <ul>
+                        <li>کلونجی (سیاہ دانے)</li>
+                        <li>خشک کھجور</li>
+                        <li>زیرہ</li>
+                        <li>مہندی پاؤڈر</li>
+                        <li>زیتون کے پتے</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ناپنے کے اوزار:</h4>
+                    <ul>
+                        <li>چھوٹی پیتل کی ترازو</li>
+                        <li>خرل اور مسل</li>
+                        <li>ناپنے کے چمچ</li>
+                        <li>دوا تیار کرنے کی جگہ</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>حجامہ (پچھنے) کا حصہ:</h4>
+                    <ul>
+                        <li>چھوٹے پچھنے لگانے کے گلاس</li>
+                        <li>پچھنے لگانے کے مقامات کا خاکہ</li>
+                        <li>جراثیم کشی کی جگہ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- حصہ 3: مشورہ خانہ -->
+            <div class="section-card">
+                <h3><span class="icon">🩺</span> حصہ 3: مشورہ خانہ</h3>
+                
+                <div class="subsection">
+                    <h4>جسمانی ڈھانچہ:</h4>
+                    <ul>
+                        <li>پردے والا نجی کمرہ</li>
+                        <li>بیٹھنے کے لیے گدے</li>
+                        <li>نیچی میز</li>
+                        <li>ہلکی روشنی</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>الف) تشخیص کی جگہ:</h4>
+                    <ul>
+                        <li>نبض دیکھنے کا گدا</li>
+                        <li>طبی طومار (اردو تحریر کے ساتھ)</li>
+                        <li>دوات اور قلم</li>
+                        <li>مریضوں کے ریکارڈ</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ب) پردے کی سکرین:</h4>
+                    <ul>
+                        <li>اسلامی جالی دار نقش</li>
+                        <li>خواتین مریضوں کے لیے پردہ</li>
+                        <li>سبز ریشمی پردہ</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ج) علاج کا سامان:</h4>
+                    <ul>
+                        <li>دواؤں کے لیے مٹی کے برتن</li>
+                        <li>پٹی کے رول</li>
+                        <li>جڑی بوٹیوں کی چائے کا سامان</li>
+                        <li>بخور کا برتن</li>
+                    </ul>
+                </div>
+
+                <div class="info-board">
+                    <h4>طبی اخلاقیات</h4>
+                    <ul>
+                        <li>مریض کی رازداری</li>
+                        <li>مفت علاج (غریبوں کے لیے)</li>
+                        <li>علم کے بغیر علاج نہ کریں</li>
+                        <li>عیادت کی اہمیت</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- حصہ 4: قرنطینہ اور عوامی صحت -->
+            <div class="section-card">
+                <h3><span class="icon">⚕️</span> حصہ 4: قرنطینہ اور عوامی صحت</h3>
+                
+                <div class="subsection">
+                    <h4>جسمانی ڈھانچہ:</h4>
+                    <ul>
+                        <li>الگ چھوٹی عمارت</li>
+                        <li>انتباہی نشانیاں</li>
+                        <li>الگ تھلگ کمرے</li>
+                    </ul>
+                </div>
+
+                <div class="info-board">
+                    <h4>وبائی مرض کے احکامات</h4>
+                    <ul>
+                        <li>✗ طاعون والی جگہ میں نہ جائیں</li>
+                        <li>✗ وہاں سے نہ نکلیں اگر وہاں ہیں</li>
+                        <li>✓ قرنطینہ میں رہیں</li>
+                        <li>✓ صحت مند لوگوں سے دوری رکھیں</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ب) سماجی فاصلہ کے نشان:</h4>
+                    <ul>
+                        <li>6 فٹ کے فاصلے پر چھوٹے مجسمے</li>
+                        <li>چھینک کے آداب کا پوسٹر</li>
+                        <li>ہاتھ دھونے کی جگہ</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h4>ج) کوڑھ کے مریضوں کی دیکھ بھال:</h4>
+                    <ul>
+                        <li>الگ علاج کی جگہ</li>
+                        <li>فاصلے کے نشان</li>
+                        <li>مہربانانہ دیکھ بھال کے بورڈ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- حصہ 5: طبی جڑی بوٹیوں کا باغ -->
+        <div class="garden-section">
+            <h2 style="text-align: center; color: #0a3d2e; margin-bottom: 2rem;">🌿 حصہ 5: طبی جڑی بوٹیوں کا باغ</h2>
+            
+            <div class="subsection">
+                <h4>جسمانی ڈھانچہ:</h4>
+                <ul>
+                    <li>اصلی/مصنوعی پودوں کا چھوٹا باغ</li>
+                    <li>چلنے کے راستے</li>
+                    <li>بیٹھنے کی جگہ</li>
+                    <li>پودوں کے لیبل</li>
+                </ul>
+            </div>
+
+            <div class="plants-grid">
+                <div class="plant-card">
+                    <div class="plant-name">🌱 پودینہ</div>
+                    <div class="benefit">ہاضمہ کی صحت</div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-name">🌿 تلسی</div>
+                    <div class="benefit">سانس کی صحت</div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-name">🌵 ایلوویرا</div>
+                    <div class="benefit">جلد کی شفا</div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-name">🌾 میتھی</div>
+                    <div class="benefit">ذیابیطس کا انتظام</div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-name">⚫ کلونجی کا پودا</div>
+                    <div class="benefit">عمومی شفا</div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>باغ کی خصوصیات:</h4>
+                <ul>
+                    <li>چھوٹا آبپاشی کا نظام</li>
+                    <li>کھاد کی جگہ</li>
+                    <li>بیج ذخیرہ کرنے کی جگہ</li>
+                    <li>باغبان کا مجسمہ</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- خوبصورتی کی تفصیلات -->
+        <div class="model-layout">
+            <h2>🎨 خوبصورتی کی تفصیلات</h2>
+            
+            <div class="subsection">
+                <h4>رنگوں کا پیلٹ:</h4>
+                <div class="color-palette">
+                    <div class="color-box" style="background: #2d8659;">زمردی سبز</div>
+                    <div class="color-box" style="background: #f5f5f0; color: #333;">موتی سفید</div>
+                    <div class="color-box" style="background: #d4af37;">سونہری</div>
+                    <div class="color-box" style="background: #40e0d0;">فیروزی</div>
+                    <div class="
